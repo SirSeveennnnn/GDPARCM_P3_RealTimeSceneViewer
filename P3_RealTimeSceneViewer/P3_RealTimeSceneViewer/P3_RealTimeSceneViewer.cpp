@@ -30,11 +30,9 @@ using namespace std;
 //void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 //void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
-//Vars
-float delta;
-
 int main()
 {
+#pragma region GLFW Init
     float width = 800;
     float height = 800;
     GLFWwindow* window;
@@ -67,17 +65,24 @@ int main()
 
     glEnable(GL_DEPTH_TEST);
 
-    //Time
-    float lastTime = glfwGetTime();
+#pragma endregion
 
-    //DearIMGUIInit
+#pragma region IMGUI INIT
+
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     ImGui::StyleColorsDark();
-    ImGui_ImplGlfw_InitForOpenGL(window, true);          // Second param install_callback=true will install GLFW callbacks and chain to existing ones.
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init();
 
+#pragma endregion
+    //Time
+    float delta = 0;
+    float lastTime = glfwGetTime();
+
+
+    //Main Loop
     while (!glfwWindowShouldClose(window))
     {
         /* Pre Start of Loop */
@@ -94,6 +99,11 @@ int main()
 
        /*Start of Loop*/
 
+
+
+
+
+
         /*End of Loop*/
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -104,14 +114,15 @@ int main()
         /* Poll for and process events */
         glfwPollEvents();
 
-
-
         lastTime = currTime; // delta time
     }
-
+    
     /*On ShutDown*/
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
+
+    glfwDestroyWindow(window);
+    glfwTerminate();
 }
 

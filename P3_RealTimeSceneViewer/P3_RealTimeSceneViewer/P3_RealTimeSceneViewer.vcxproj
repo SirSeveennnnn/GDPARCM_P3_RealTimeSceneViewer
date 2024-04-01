@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)/Libs/include;$(SolutionDir)/Libs/imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,6 +139,8 @@
     <ClCompile Include="..\Libs\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\Libs\imgui\imgui_widgets.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="IETSemaphore.cpp" />
+    <ClCompile Include="IETThread.cpp" />
     <ClCompile Include="P3_RealTimeSceneViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +152,8 @@
     <ClInclude Include="..\Libs\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\Libs\imgui\imstb_textedit.h" />
     <ClInclude Include="..\Libs\imgui\imstb_truetype.h" />
+    <ClInclude Include="IETSemaphore.h" />
+    <ClInclude Include="IETThread.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="tiny_obj_loader.h" />
   </ItemGroup>
